@@ -1,4 +1,55 @@
-// FAKE DATA
+function renderBooks(filter) {
+
+    const books__wrapper = document.querySelector('.books');
+    const books = getBooks();
+
+    if (filter === 'LOW_TO_HIGHT') {
+        books.sort((a, b) => a.originalPrice - b.originalPrice);
+    } else if (filter === 'HIGHT_TO_LOW') {
+        books.sort((a, b) => b.originalPrice - a.originalPrice);
+    } else if (filter === 'RATING') {
+        books.sort((a, b) => b.rating - a.rating);
+    }
+
+
+    const booksHtml = books.map(books => {
+        return ` <div class="book">
+        <figure class="book__img--wrapper">
+            <img class="book__img" src="${books.url}">
+        </figure>
+        <div class="book__title">
+            ${books.title}
+        </div>
+        <div class="book__ratings">
+            ${ratingsHtml(books.rating)}
+        </div>
+        <div class="book__price">
+            <span class="book__price--normal">$${books.originalPrice.toFixed(2)}</span> $${books.salePrice}
+        </div>
+    </div>`
+    }).join('');
+
+    books__wrapper.innerHTML = booksHtml;
+}
+setTimeout(() => {
+    renderBooks();
+});
+
+function ratingsHtml(rating) {
+    let ratingHtml = '';
+    for (let i = 0; i < Math.floor(rating); i++) {
+        ratingHtml += '<i class="fas fa-star" aria-hidden="true"></i>'
+    }
+    if (!Number.isInteger(rating)) {
+        ratingHtml += '<i class="fas fa-star-half-alt" aria-hidden="true"></i></i>'
+    }
+    return ratingHtml;
+}
+
+function filterBooks(event) {
+    renderBooks(event.target.value);
+}
+
 function getBooks() {
     return [{
             id: 1,

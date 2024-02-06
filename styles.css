@@ -198,6 +198,13 @@ header {
     justify-content: space-around;
 }
 
+.books__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
 .header__description {
     display: flex;
     flex-direction: column;
@@ -339,6 +346,7 @@ FEATURES
 }
 
 .book__img--wrapper {
+    aspect-ratio: 1/1.4;
     margin-bottom: 8px;
     border-radius: 4px;
     overflow: hidden;
@@ -368,6 +376,10 @@ FEATURES
     text-decoration: line-through;
     padding-right: 6px;
     color: #bfbfbf;
+}
+
+.fas {
+    margin-right: 2px;
 }
 
 
