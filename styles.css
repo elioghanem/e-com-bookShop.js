@@ -470,12 +470,14 @@ select {
     max-width: 200px;
 }
 
-.books__loading {
-    width: 100%;
+.books__loading--spinner {
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 60px;
     font-size: 60px;
     color: #7342d6;
 }
